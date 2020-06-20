@@ -1,0 +1,38 @@
+#dropdown-child {
+    visibility: hidden;
+    background-color:  rgb(240, 240, 240);
+    width: 99%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sub-cat-list {
+    margin: 0.5rem .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-cat-1 {
+    margin: 0.4rem 0 0.4rem 0;
+}
+.sub-cat-1 a {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0.5rem 0rem 0.5rem;
+    text-decoration: none;
+}
+
+.sub-cat-2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-cat-2 a{
+    color: black;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0.1rem 0.5rem;
+    text-decoration: none;
+}
