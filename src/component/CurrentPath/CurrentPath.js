@@ -29,7 +29,7 @@ class CurrentPath extends React.Component {
     };
 
     renderSubcat1 () {
-        if (this.props.subcat1 !== '') {
+        if (this.props.subcat1) {
             return (
                 <Link to = {`/c/${this.props.category}/${this.props.subcat1}`} >
                     {` > ${this.props.subcat1}`}
@@ -41,7 +41,7 @@ class CurrentPath extends React.Component {
     };
 
     renderSubcat2 () {
-        if (this.props.subcat2 !== '') {
+        if (this.props.subcat2) {
             return (
                 <Link to = {`/c/${this.props.category}/${this.props.subcat1}${this.props.subcat2}`} >
                     {` > ${this.props.subcat2}`}

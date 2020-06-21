@@ -13,27 +13,40 @@ class Category extends React.Component {
             cat: '',
             subCat1: '',
             subCat2: ''
-
         }
     }
 
     componentDidMount() {
+        //alert("component did mount")
+        const cat = JSON.parse(JSON.stringify(this.props.match.params.cat))
         this.setState({
-            cat: this.props.match.params.cat
+            cat: cat
         })
-        if (this.props.match.params.subCat2) {
+        
+        //alert(this.props.match.params.cat)
+        //alert(this.state.cat)
+        //alert(this.props.match.params.subCat1)
+        //alert(this.props.match.params.subCat2)
+        
+        if (this.state.subCat2) {
+            /*
             this.setState({
                 subCat1: this.props.match.params.subCat1,
                 subCat2: this.props.match.params.subCat2
             })
+            */
+           
             Xpress.getItems(this.state.subCat2, "sc2").then(results => {
                 this.setState ({xpressGetResults: results})
             })
 
-        } else if (this.props.match.params.subCat1) {
+        } else if (this.state.subCat1) {
+            /*
             this.setState({
                 subCat1: this.props.match.params.subCat1
             })
+            */
+
             Xpress.getItems(this.state.subCat1, "sc").then(results => {
                 this.setState ({xpressGetResults: results})
             })       
@@ -43,11 +56,20 @@ class Category extends React.Component {
             }) 
         }
         
+        //alert(this.state.subCat2)
+        //alert(this.xpressGetResults)
+    }
+
+    displayState() {
+        return (
+            alert (this.state.cat)
+        )        
     }
 
     render () {
         return (
             <div className = "category-view">
+                {this.displayState()}
                 <CurrentPath 
                     cat = {this.state.cat} 
                     subCat1 = {this.state.subCa1}

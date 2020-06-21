@@ -17,7 +17,6 @@ class App extends React.Component {
     }
     this.xpressGetItems = this.xpressGetItems.bind(this);
     this.changeCurrentProduct = this.changeCurrentProduct.bind(this);
-    this.changeCurrentPath = this.changeCurrentPath.bind(this);
   }
 
   xpressGetItems (term, subUrl) {
@@ -29,9 +28,6 @@ class App extends React.Component {
   })
   }
 
-  changeCurrentPath (currentPath) {
-    this.setState ( {currentPath: currentPath} )
-  }
 
   changeCurrentProduct (currentProduct) {
     this.setState ( {currentProduct: currentProduct} )
@@ -62,29 +58,10 @@ class App extends React.Component {
                   changeCurrentProduct = {this.changeCurrentProduct} />
               } />
 
-              <Route path = '/c/:cat/:subCat1?/:subCat2?' render = {(props) => 
-                <Category 
-                  {...props}
-                />
-              } />
+              <Route path = '/c/:cat/:subCat1?/:subCat2?' component = {Category} />
 
 
-              <Route path = '/sc/:subcat' render = {(props) => 
-                <ItemsList 
-                  {...props} 
-                  items = {this.state.xpressGetResults} 
-                  currentPath = {this.state.currentPath}
-                  changeCurrentProduct = {this.changeCurrentProduct} 
-                   />
-              } />
-
-              <Route path = '/sc2/:subcat2' render = {(props) => 
-                <ItemsList 
-                  {...props} 
-                  items = {this.state.xpressGetResults} 
-                  currentPath = {this.state.currentPath}
-                  changeCurrentPath = {this.changeCurrentPath} />
-              } />    
+            
                 
               <Route path = '/product/:id' render = {(props) => 
                 <Detail 

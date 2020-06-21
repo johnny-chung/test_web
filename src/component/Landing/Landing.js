@@ -23,7 +23,6 @@ class Landing extends React.Component {
         this.renderDropdownParent = this.renderDropdownParent.bind (this);
         this.handleMouseOver = this.handleMouseOver.bind (this);
         this.handleMouseLeave = this.handleMouseLeave.bind (this);
-        this.handleCurrentPathChange = this.handleCurrentPathChange.bind(this);
 
     }
 
@@ -38,22 +37,7 @@ class Landing extends React.Component {
         document.getElementById("dropdown-child").style.visibility = "hidden";
     }
 
-    handleCurrentPathChange (pathFromChild) {
-        let tempPath = {category: this.state.currentSelect};
-        if (pathFromChild.subcat1) {
-            tempPath.subcat1 = pathFromChild.subcat1;
-            //alert (tempPath.subcat1);
-
-        }
-        if (pathFromChild.subcat2) {
-            tempPath.subcat2 = pathFromChild.subcat2;
-            //alert (tempPath.subcat2);
-        }
-        
-        this.props.changeCurrentPath(tempPath)
-
-    }
-
+    
     renderDropdownParent () {
         return (this.state.categories.map (category => {
                 return (
@@ -75,10 +59,9 @@ class Landing extends React.Component {
                 </div>                
                 <div className = "dropdown-child" >
                     <DropdownChild
+                    category = {this.state.currentSelect}
                     subCategories = {this.state[this.state.currentSelect]} 
-                    xpressGetItems = {this.props.xpressGetItems} 
-                    handleMouseLeave = {this.handleMouseLeave} 
-                    handleCurrentPathChange = {this.handleCurrentPathChange} />  
+                    handleMouseLeave = {this.handleMouseLeave}  />  
 
                 </div>
                 

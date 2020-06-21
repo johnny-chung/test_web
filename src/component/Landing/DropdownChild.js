@@ -7,54 +7,38 @@ class DropdownChild extends React.Component {
         super (props);
         this.renderDropdownChild = this.renderDropdownChild.bind(this);
         this.renderSubList = this.renderSubList.bind(this);
-        this.handleClickSubcat = this.handleClickSubcat.bind(this);        
-        this.handleClickSubcat2 = this.handleClickSubcat2.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
 
     }
 
-    handleClickSubcat (subcat) {
-        //alert(subcat);
-        this.props.xpressGetItems(subcat, "sc");
-        this.props.handleCurrentPathChange( {subcat1: subcat} )
-        
-    }
-    
-
-    handleClickSubcat2 (subcat1, subcat2) {
-        //alert(subcat2);
-        this.props.xpressGetItems(subcat2, "sc2");
-        this.props.handleCurrentPathChange( {subcat1: subcat1, subcat2: subcat2} )
-        
-    }
-
+   
     handleMouseLeave () {
         this.props.handleMouseLeave();
     }
     
     renderDropdownChild () {
-        return Object.keys (this.props.subCategories).map(subCategory => {
-            let subcat2List = this.props.subCategories[subCategory];
+        return Object.keys (this.props.subCategories).map(subCat1 => {
+            let subCat2List = this.props.subCategories[subCat1];
             return (
                 <div className = "sub-cat-list">
                     <div className = "sub-cat-1">
-                        <Link to = {`/sc/${subCategory}`}>
-                            <a onClick = {() => this.handleClickSubcat(subCategory)}>{subCategory}</a>
+                        <Link to = {`/c/${this.props.category}/${subCat1}`}>
+                            {subCat1}
                         </Link>
                     </div>                    
-                    {this.renderSubList(subcat2List, subCategory)}
+                    {this.renderSubList(subCat1, subCat2List)}
                 </div>
             )
         })             
           
     }
 
-    renderSubList (subcat2List, subcat1) {
-        return subcat2List.map (subcat2 => {
+    renderSubList (subCat1, subCat2List) {
+        return subCat2List.map (subCat2 => {
             return (
                 <div className =  "sub-cat-2" >
-                     <Link to = {`/sc2/${subcat2}`} >                    
-                        <a onClick = {() => this.handleClickSubcat2(subcat1, subcat2)}>{subcat2}</a>
+                     <Link to = {`/c/${this.props.category}/${subCat1}/${subCat2}`} >                    
+                        {subCat2}
                     </Link>
                 </div>
                
